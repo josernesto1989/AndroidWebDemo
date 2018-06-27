@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Android WebView y NativeApp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script language="javascript">
+	function callFromAndroidToJS(texto) {
+ 		document.getElementById("target").innerHTML=texto;
+	}
+	
+	function callFromJSToAndroid() {
+		jsNativeInterface.metodoDemo1();
+	}
+	
+	function callFromJSToAndroidForReadJson() {
+ 		var datosJson = eval('(' + jsNativeInterface.metodoDemo2() + ')');
+ 		document.getElementById("target").innerHTML=datosJson.timestamp;
+	}	
+</script>
+<style type="text/css">
+	a { color: green; text-decoration: underline;}	
+</style>
+</head>
+<body>
+	<ul>
+		<li><p>Prueba 1: <a onclick="callFromJSToAndroid();">Haga clic aquí</a> para invocar desde el JavaScript a la aplicación Android</p></li>
+		<li><p>Prueba 2: <a onclick="callFromJSToAndroidForReadJson();">Haga clic aquí</a> para invocar desde el JavaScript a la aplicación Android y leer JSON</p></li>
+		<li><p>Prueba 3: <span id="target">Este texto será sustituido desde la aplicación nativa</span></p></li>
+	</ul>
+</body>
+</html>
+
